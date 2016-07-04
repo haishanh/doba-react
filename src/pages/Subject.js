@@ -1,5 +1,6 @@
 import React from 'react';
-import request from 'reqwest'
+import request from 'reqwest';
+import { Link } from 'react-router';
 
 class Subject extends React.Component {
   state = {
@@ -49,7 +50,7 @@ class Subject extends React.Component {
       return (
         <span key={idx}>
           {idx === 0 ? '' : ' / '}
-          <a href={celeb.alt}>{celeb.name}</a>
+          <Link to={'celebrity/' + celeb.id}>{celeb.name}</Link>
         </span>
       );
     });
