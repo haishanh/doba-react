@@ -1,0 +1,43 @@
+$subject-height: 600px; // TODO
+
+.subject-title {
+  text-align: center;
+  & > * {
+    font-weight: 300px;
+  }
+}
+
+.subject-hero {
+  height: $subject-height;
+  position: relative;
+}
+
+.subject-hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.subject-hero-bg {
+  width: 100%;
+  height: 100%;
+  background-color: #ccc; // TODO
+  background-size: cover;
+  position: absolute;
+  filter: blur(30px);
+  overflow: hidden;
+  top: 0px;
+  z-index: -1;
+}
+
+.subject-hero-info {
+  padding-left: 20px;
+  color: #fff;
+}
+
+.subject-content {
+  width: 700px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

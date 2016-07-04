@@ -5,7 +5,7 @@ class App extends React.Component {
         return (
           <div>
             <h1>Movies</h1>
-            {this.props.children}
+            <div className="content">{this.props.children}</div>
           </div>
         );
     }
