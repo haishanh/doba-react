@@ -2,6 +2,8 @@ import React from 'react';
 import request from 'reqwest'
 import { Link } from 'react-router';
 
+import Movie from '../components/movie';
+
 class In_theaters extends React.Component {
   state = {
     title: '',
@@ -31,7 +33,7 @@ class In_theaters extends React.Component {
     const subjects = this.state.subjects.map((movie, idx) => {
       return (
         <li key={idx}>
-          <Link to={'/subject/' + movie.id}>{movie.title}</Link>
+          <Movie data={movie} />
         </li>
       );
     });
@@ -48,3 +50,5 @@ class In_theaters extends React.Component {
 }
 
 export default In_theaters;
+
+// <Link to={'/subject/' + movie.id}>{movie.title}</Link>

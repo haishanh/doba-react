@@ -45,7 +45,6 @@ class Subject extends React.Component {
   }
 
   renderCelebrityName = (celebs) => {
-    let n = "xd";
     let res = celebs.map((celeb, idx) => {
       return (
         <span key={idx}>
@@ -74,10 +73,12 @@ class Subject extends React.Component {
           <div className="subject-hero-container">
             <img src={this.state.poster} />
             <div className="subject-hero-info">
+              <div className="rating">
+                <span>{this.state.rating.average}</span>/10
+              </div>
               <div>{info}</div>
-              <div className="rating">{this.state.rating.average}/10</div>
               <div>导演： {directors}</div>
-              <div>卡司： {casts}</div>
+              <div>主演： {casts}</div>
             </div>
           </div>
           <div className="subject-hero-bg" style={{backgroundImage}}></div>
