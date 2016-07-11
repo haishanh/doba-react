@@ -10,7 +10,7 @@ class In_theaters extends React.Component {
     subjects: []
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     let url = 'https://api.douban.com/v2/movie/in_theaters';
 
     request({
@@ -33,7 +33,7 @@ class In_theaters extends React.Component {
     const subjects = this.state.subjects.map((movie, idx) => {
       return (
         <li key={idx}>
-          <Movie data={movie} />
+          <Movie key={'movie' + idx} data={movie} inlineTitle />
         </li>
       );
     });

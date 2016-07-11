@@ -24,20 +24,44 @@ const Movie = (props) => {
   let directors = renderCelebrityName(m.directors);
   let casts = renderCelebrityName(m.casts);
 
-  return (
-    <section className="subject-hero">
-      <div className="subject-hero-container">
-        <img src={m.images.large} />
-        <div className="subject-hero-info">
-          <div className="rating">
-            <span>{m.rating.average}</span>/10
-          </div>
-          <div>{info}</div>
-          <div>导演： {directors}</div>
-          <div>主演： {casts}</div>
-        </div>
+  let title = m.title === m.original_title
+  ? (
+      <div className="subject-title">
+        <div className="title-1">{m.title}</div>
       </div>
-      <div className="subject-hero-bg" style={{backgroundImage}}></div>
+    )
+  : (
+      <div className="subject-title">
+        <div className="title-1">{m.title}</div>
+        <div className="title-2">{m.original_title}</div>
+      </div>
+    );
+  let subjectTitle = null;
+  let subjectTitleInline = null;
+  props.inlineTitle
+  ? subjectTitleInline = title
+  : subjectTitle = title;
+
+
+  return (
+    <section className="subject-header">
+      {subjectTitle}
+      <section className="subject-hero">
+        <div className="subject-hero-container">
+          <img src={m.images.large} />
+          <div className="subject-hero-info">
+            {subjectTitleInline}
+            <div className="rating">
+              <span>{m.rating.average}</span>/10
+            </div>
+            <div>{info}</div>
+            <div>导演： {directors}</div>
+            <div>主演： {casts}</div>
+            <a href={m.alt}>豆瓣</a>
+          </div>
+        </div>
+        <div className="subject-hero-bg" style={{backgroundImage}}></div>
+      </section>
     </section>
   );
 }

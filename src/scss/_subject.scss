@@ -1,9 +1,12 @@
 $subject-height: 600px; // TODO
 
 .subject-title {
-  text-align: center;
-  & > * {
-    font-weight: 300px;
+  font-weight: 200;
+  .title-1 {
+    font-size: 2em;
+  }
+  .title-2 {
+    font-size: 1.7em;
   }
 }
 
@@ -33,6 +36,7 @@ $subject-height: 600px; // TODO
 
 .subject-hero-info {
   padding-left: 20px;
+  flex-basis: 250px;
   color: #fff;
 }
 
