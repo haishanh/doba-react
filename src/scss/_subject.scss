@@ -1,12 +1,14 @@
 $subject-height: 600px; // TODO
 
 .subject-title {
+  text-align: center;
   font-weight: 200;
+  padding: 10px 0;
   .title-1 {
     font-size: 2em;
   }
   .title-2 {
-    font-size: 1.7em;
+    font-size: 1.5em;
   }
 }
 
@@ -20,6 +22,9 @@ $subject-height: 600px; // TODO
   justify-content: center;
   align-items: center;
   height: 100%;
+  .subject-title {
+    text-align: left;
+  }
 }
 
 .subject-hero-bg {
@@ -36,7 +41,7 @@ $subject-height: 600px; // TODO
 
 .subject-hero-info {
   padding-left: 20px;
-  flex-basis: 250px;
+  flex-basis: 300px;
   color: #fff;
 }
 

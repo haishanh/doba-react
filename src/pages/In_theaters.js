@@ -33,7 +33,7 @@ class In_theaters extends React.Component {
     const subjects = this.state.subjects.map((movie, idx) => {
       return (
         <li key={idx}>
-          <Movie key={'movie' + idx} data={movie} inlineTitle />
+          <Movie data={movie} inlineTitle />
         </li>
       );
     });
