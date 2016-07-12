@@ -16,6 +16,7 @@ const renderCelebrityName = (celebs) => {
 
 const Movie = (props) => {
   let m = props.data;
+  if (!m.title) {return null;}
   let countries = m.countries
     ? ' / ' + m.countries.join(',')
     : '';
@@ -48,7 +49,9 @@ const Movie = (props) => {
       {subjectTitle}
       <section className="subject-hero">
         <div className="subject-hero-container">
-          <img src={m.images.large} />
+          <Link to={'subject/' + m.id}>
+            <img src={m.images.large} />
+          </Link>
           <div className="subject-hero-info">
             {subjectTitleInline}
             <div className="rating">
