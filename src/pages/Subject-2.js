@@ -3,10 +3,10 @@ import request from 'reqwest';
 import { Link } from 'react-router';
 
 import Movie from '../components/movie';
+import Cast from '../components/cast';
 
 class Subject extends React.Component {
   state = {
-    movie: {},
     summary: ''
   }
 
@@ -33,9 +33,22 @@ class Subject extends React.Component {
   render = () => {
     console.log('this.state.movie');
     console.log(this.state.movie);
+
+    if (!this.state.movie) return null;
+
+    let casts = this.state.movie.casts.map(cast => {
+      return <Cast {...cast} />;
+    });
+
     return (
       <div>
-        <Movie data={this.state.movie} />
+        <Movie data={this.state.movie} appBackground />
+        <section className="subject-casts">
+          <div className="casts-title">主演</div>
+          <div className="subject-casts-flex">
+            {casts}
+          </div>
+        </section>
         <section className="subject-content">
           <p>{this.state.summary}</p>
         </section>

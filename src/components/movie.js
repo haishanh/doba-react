@@ -45,6 +45,10 @@ const Movie = (props) => {
   ? subjectTitleInline = title
   : subjectTitle = title;
 
+  let bgClassName = props.appBackground
+                  ? 'app-bg'
+                  : 'subject-hero-bg';
+
 
   return (
     <section className="subject-header">
@@ -69,10 +73,15 @@ const Movie = (props) => {
             </a>
           </div>
         </div>
-        <div className="subject-hero-bg" style={{backgroundImage}}></div>
+        <div className={bgClassName} style={{backgroundImage}}></div>
       </section>
     </section>
   );
 }
+
+Movie.propTypes =  {
+  inlineTitle: React.PropTypes.bool,
+  appBackground: React.PropTypes.bool
+};
 
 export default Movie;

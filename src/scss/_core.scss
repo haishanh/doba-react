@@ -2,6 +2,13 @@ body {
   font-family: $font-base;
 }
 
+footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #ddd;
+  padding: 25px 0;
+}
+
 h1 {
   text-align: center;
 }
@@ -22,4 +29,14 @@ a {
 .icon {
   width: 32px;
   height: 32px;
+}
+
+.app-bg {
+  background-size: cover;
+  position: fixed;
+  filter: blur(30px) brightness(85%);
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
 }
