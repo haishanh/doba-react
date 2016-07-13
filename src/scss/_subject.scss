@@ -52,7 +52,36 @@ $subject-height: 600px; // TODO
 }
 
 .rating {
-  span {
+  display: flex;
+  align-items: center;
+  .average {
     font-size: 1.6em;
   }
+  .star {
+    fill: #FFC107;
+    margin-right: 5px;
+  }
 }
+
+.douban-link {
+  $sz: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px;
+  margin-top: 5px;
+  height: $sz;
+  width: $sz;
+  .douban {
+    fill: #3ca353;
+    fill: #ccc;
+    height: 100%;
+    width: 100%;
+  }
+  &:hover {
+    border-color: #3ca353;
+    .douban {
+      fill: #3ca353;
+    }
+  }
+}
+

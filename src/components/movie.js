@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import Icon from './icon.js';
+
 const renderCelebrityName = (celebs) => {
   let res = celebs.map((celeb, idx) => {
     return (
@@ -55,12 +57,16 @@ const Movie = (props) => {
           <div className="subject-hero-info">
             {subjectTitleInline}
             <div className="rating">
-              <span>{m.rating.average}</span>/10
+              <Icon name="star"/>
+              <span className="average">{m.rating.average}</span>
+              <span className="max">/10</span>
             </div>
             <div>{info}</div>
             <div>导演： {directors}</div>
             <div>主演： {casts}</div>
-            <a href={m.alt}>豆瓣</a>
+            <a href={m.alt}>
+              <div className="douban-link"><Icon name="douban" /></div>
+            </a>
           </div>
         </div>
         <div className="subject-hero-bg" style={{backgroundImage}}></div>
