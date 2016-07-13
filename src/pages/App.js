@@ -6,6 +6,9 @@ class App extends React.Component {
           <div>
             <h1>Movies</h1>
             <div className="content">{this.props.children}</div>
+            <footer>
+              Made with love by Haishan
+            </footer>
           </div>
         );
     }
