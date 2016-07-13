@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 /*
@@ -12,8 +12,22 @@ id: '01234',
 name: 'Jon Snow'
  */
 
-
-export default const Cast = props => {
-  return null;
+const Cast = ({ avatars, name, id }) => {
+  return (
+    <div className="wrap">
+      <Link to={'celebrity/' + id}>
+        <img src={avatars.medium} />
+        <div>{name}</div>
+      </Link>
+    </div>
+  );
 }
+
+Cast.propTypes = {
+  avatars: PropTypes.object,
+  name: PropTypes.string,
+  id: PropTypes.string
+};
+
+export default Cast;
 
