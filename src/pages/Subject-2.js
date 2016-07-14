@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 
 import Movie from '../components/movie';
 import Cast from '../components/cast';
+import Loading from '../components/Loading';
 
 class Subject extends React.Component {
   state = {
@@ -34,7 +35,7 @@ class Subject extends React.Component {
     console.log('this.state.movie');
     console.log(this.state.movie);
 
-    if (!this.state.movie) return null;
+    if (!this.state.movie) return <Loading />;
 
     let casts = this.state.movie.casts.map(cast => {
       return <Cast {...cast} />;

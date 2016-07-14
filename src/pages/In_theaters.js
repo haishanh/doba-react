@@ -3,6 +3,7 @@ import request from 'reqwest'
 import { Link } from 'react-router';
 
 import Movie from '../components/movie';
+import Loading from '../components/Loading';
 
 class In_theaters extends React.Component {
   state = {
@@ -30,6 +31,8 @@ class In_theaters extends React.Component {
   }
 
   render = () => {
+    if (!this.state.title) return <Loading />;
+
     const subjects = this.state.subjects.map((movie, idx) => {
       return (
         <li key={idx}>
