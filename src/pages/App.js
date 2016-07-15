@@ -1,10 +1,14 @@
 import React from 'react';
 
+import Icon from '../components/icon';
+
 class App extends React.Component {
     render() {
         return (
           <div>
-            <h1>Movies</h1>
+            <div className="header">
+              <Icon name="doba" />
+            </div>
             <div className="content">{this.props.children}</div>
             <footer>
               Made with love by Haishan
