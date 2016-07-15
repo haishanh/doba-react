@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import Icon from './icon.js';
+import Icon from './icon';
 
 const renderCelebrityName = (celebs) => {
   let res = celebs.map((celeb, idx) => {

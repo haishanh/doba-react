@@ -43,7 +43,7 @@ class In_theaters extends React.Component {
 
     return (
       <div>
-        <h2>{this.state.title}</h2>
+        <div className="content-title">{this.state.title}</div>
         <ul>
           {subjects}
         </ul>
