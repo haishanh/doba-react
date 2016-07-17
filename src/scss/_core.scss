@@ -1,5 +1,6 @@
 html {
   background-color: #000; // I'm crazy
+  color: #fff;
 }
 
 
@@ -34,6 +35,13 @@ a {
 .icon {
   width: 32px;
   height: 32px;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: 200;
+  padding: 0.5em 0;
+  text-align: center;
 }
 
 .app-bg {

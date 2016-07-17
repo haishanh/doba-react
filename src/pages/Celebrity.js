@@ -1,5 +1,9 @@
 import React from 'react';
-import request from 'reqwest'
+import { Link } from 'react-router';
+import request from 'reqwest';
+
+import Loading from '../components/Loading';
+import Icon from '../components/icon';
 
 class Celebrity extends React.Component {
 
@@ -40,25 +44,45 @@ class Celebrity extends React.Component {
   renderWorks = (works) => {
     let items = works.map((work, idx) => {
       return (
-        <li key={idx}><img src={work.subject.images.medium} /></li>
+        <div key={idx}>
+          <Link to={'subject/' + work.subject.id}>
+            <img src={work.subject.images.medium} />
+            <div>{work.subject.title}</div>
+          </Link>
+        </div>
       );
     });
 
     return (
-      <ul>{items}</ul>
+      <div className="celebrity-works">
+        <div className="title">作品</div>
+        <div className="celebrity-works-flex">
+          {items}
+        </div>
+      </div>
     );
   }
 
   render = () => {
+    if (!this.state.name) return <Loading />;
+
     let works = this.renderWorks(this.state.works);
 
     return (
-      <div>
-        <h2>{this.name} {this.name_en}</h2>
-        <img src={this.state.avatar}/>
-        <div>性别：{this.state.gender}</div>
-        <div>出生地：{this.state.born_place}</div>
-        <div><a href={this.state.alt}>豆瓣链接</a></div>
+      <div className="celebrity-page">
+        <div className="content-title">{this.state.name + ' ' + this.state.name_en}</div>
+        <div className="celebrity-info-flex">
+          <div className="celebrity-image">
+            <img src={this.state.avatar}/>
+          </div>
+          <div className="celebrity-info">
+            <div>性别：{this.state.gender}</div>
+            <div>出生地：{this.state.born_place}</div>
+            <a href={this.state.alt}>
+              <div className="douban-link"><Icon name="douban" /></div>
+            </a>
+          </div>
+        </div>
         {works}
       </div>
     );
