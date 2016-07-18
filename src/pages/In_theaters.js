@@ -12,9 +12,17 @@ class In_theaters extends React.Component {
   }
 
   componentDidMount = () => {
+    this.fetchList();
+  }
+
+  componentWillUnMount = () => {
+    this.request.abort();
+  }
+
+  fetchList = () => {
     let url = 'https://api.douban.com/v2/movie/in_theaters';
 
-    request({
+    this.request = request({
       url,
       type: 'jsonp'
     })

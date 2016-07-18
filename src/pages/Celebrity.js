@@ -18,9 +18,23 @@ class Celebrity extends React.Component {
   }
 
   componentWillMount = () => {
+    this.fetchCelebrity();
+  }
+
+  componentDidUpdate = (prevProps) => {
+    let oldId = prevProps.params.id;
+    let newId = this.props.params.id;
+    if (newId !== oldId) this.fetchCelebrity();
+  }
+
+  componentWillUnMount = () => {
+    this.request.abort();
+  }
+
+  fetchCelebrity = () => {
     let baseURL = 'https://api.douban.com/v2/movie/celebrity/';
 
-    request({
+    this.request = request({
       url: baseURL + this.props.params.id,
       type: 'jsonp'
     })

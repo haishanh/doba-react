@@ -12,9 +12,23 @@ class Subject extends React.Component {
   }
 
   componentDidMount = () => {
+    this.fetchSubject();
+  }
+
+  componentDidUpdate = (prevProps) => {
+    let oldId = prevProps.params.id;
+    let newId = this.props.params.id;
+    if (newId !== oldId) this.fetchSubject();
+  }
+
+  componentWillUnMount = () => {
+    this.request.abort();
+  }
+
+  fetchSubject = () => {
     let baseURL = 'https://api.douban.com/v2/movie/subject/';
 
-    request({
+    this.request = request({
       url: baseURL + this.props.params.id,
       type: 'jsonp'
     })
@@ -28,7 +42,6 @@ class Subject extends React.Component {
     .fail((err, msg) => {
       console.log(err, msg);
     });
-
   }
 
   render = () => {
