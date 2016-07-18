@@ -71,16 +71,18 @@ class Celebrity extends React.Component {
     return (
       <div className="celebrity-page">
         <div className="content-title">{this.state.name + ' ' + this.state.name_en}</div>
-        <div className="celebrity-info-flex">
+        <div className="celebrity-profile">
           <div className="celebrity-image">
             <img src={this.state.avatar}/>
           </div>
           <div className="celebrity-info">
-            <div>性别：{this.state.gender}</div>
-            <div>出生地：{this.state.born_place}</div>
-            <a href={this.state.alt}>
-              <div className="douban-link"><Icon name="douban" /></div>
-            </a>
+            <div>{'性别：' + this.state.gender}</div>
+            <div>{'出生地：' + this.state.born_place}</div>
+            <div>
+              <a href={this.state.alt}>
+                <div className="douban-link"><Icon name="douban" /></div>
+              </a>
+            </div>
           </div>
         </div>
         {works}

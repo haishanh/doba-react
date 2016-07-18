@@ -1,9 +1,25 @@
-.celebrity-page {
+.celebrity-profile {
+  text-align: center;
   width: 700px;
+  margin: 0 auto;
+}
+
+.celebrity-info {
+  .douban-link {
+    margin: 5px auto 0;
+  }
+}
+
+.celebrity-works {
+  width: 800px;
   margin: 0 auto;
 }
 
 .celebrity-works-flex {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  div {
+    text-align: center;
+  }
 }
