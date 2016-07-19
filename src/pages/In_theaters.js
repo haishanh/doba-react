@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 
 import MovieList from '../components/MovieList';
 import Loading from '../components/Loading';
+import Search from '../components/Search';
 
 class In_theaters extends React.Component {
   state = {
@@ -43,6 +44,9 @@ class In_theaters extends React.Component {
 
     return (
       <div>
+        <div className="search-wrapper">
+          <Search />
+        </div>
         <div className="intheater title">{this.state.title}</div>
         <MovieList subjects={this.state.subjects} inlineTitle />
       </div>

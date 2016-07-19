@@ -1,0 +1,28 @@
+.search-wrapper { // to remove to core
+  width: 400px;
+  margin: 0 auto;
+}
+
+.search-bar {
+  display: flex;
+  height: 32px;
+  align-items: center;
+}
+
+
+.search-icon {
+  background-color: #a7a7a7;
+}
+
+.icon.search {
+  fill: #fff;
+  width: 24px;
+  height: 24px;
+}
+
+.search-input {
+  width: 100%;
+  height: 24px;
+  background-color: #333;
+  border: none;
+}
