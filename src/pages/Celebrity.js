@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import request from 'reqwest';
 
 import Loading from '../components/Loading';
-import Icon from '../components/icon';
+import Icon from '../components/Icon';
 
 class Celebrity extends React.Component {
 

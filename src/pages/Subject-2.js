@@ -2,8 +2,8 @@ import React from 'react';
 import request from 'reqwest';
 import { Link } from 'react-router';
 
-import Movie from '../components/movie';
-import Cast from '../components/cast';
+import Movie from '../components/Movie';
+import Cast from '../components/Cast';
 import Loading from '../components/Loading';
 
 class Subject extends React.Component {
