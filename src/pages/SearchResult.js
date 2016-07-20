@@ -4,9 +4,8 @@ import { Link } from 'react-router';
 
 import MovieList from '../components/MovieList';
 import Loading from '../components/Loading';
-import Search from '../components/Search';
 
-class In_theaters extends React.Component {
+class SearchResult extends React.Component {
   state = {
     title: '',
     subjects: []
@@ -14,6 +13,7 @@ class In_theaters extends React.Component {
 
   componentDidMount = () => {
     this.fetchList();
+    console.log('Mounting');
   }
 
   componentWillUnMount = () => {
@@ -21,7 +21,8 @@ class In_theaters extends React.Component {
   }
 
   fetchList = () => {
-    let url = 'https://api.douban.com/v2/movie/in_theaters';
+    let url = 'https://api.douban.com/v2/movie/search?q=';
+    url += this.props.location.query.q;
 
     this.request = request({
       url,
@@ -52,4 +53,8 @@ class In_theaters extends React.Component {
   }
 }
 
-export default In_theaters;
+export default SearchResult;
+
+        // <div className="search-wrapper">
+        //   <Search />
+        // </div>

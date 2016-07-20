@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Icon from '../components/Icon';
+import Search from '../components/Search';
 
 class App extends React.Component {
     render() {
@@ -8,6 +9,9 @@ class App extends React.Component {
           <div>
             <div className="header">
               <Icon name="doba" />
+              <div className="search-wrapper">
+                <Search />
+              </div>
             </div>
             <div className="content">{this.props.children}</div>
             <footer>
