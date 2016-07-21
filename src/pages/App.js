@@ -18,7 +18,14 @@ class App extends Component {
             </div>
             <div className="content">{this.props.children}</div>
             <footer>
-              Made with love by Haishan
+              <p>
+                <span>Made with </span>
+                <span className="red">love</span>
+                <span> by Haishan</span>
+              </p>
+              <a href='https://github.com/haishanh/moba-react'>
+                <Icon name="github" />
+              </a>
             </footer>
           </div>
         );

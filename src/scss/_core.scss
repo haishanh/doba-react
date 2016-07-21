@@ -16,6 +16,18 @@ footer {
   font-size: 0.9em;
   color: #ddd;
   padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  svg.github {
+    fill: #666;
+    width: 24px;
+    height: 24px;
+  }
+  &:hover {
+    .red {
+      color: tomato;
+    }
+  }
 }
 
 h1 {
