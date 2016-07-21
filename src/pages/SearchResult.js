@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import request from 'reqwest'
 import { Link } from 'react-router';
 
 import MovieList from '../components/MovieList';
 import Loading from '../components/Loading';
 
-class SearchResult extends React.Component {
+class SearchResult extends Component {
   state = {
+    ready: false,
     title: '',
     subjects: []
   }
 
   componentDidMount = () => {
     this.fetchList();
-    console.log('Mounting');
+  }
+
+  componentDidUpdate = (prevProps) => {
+    let oldQ = prevProps.location.query.q;
+    let newQ = this.props.location.query.q;
+    if (newQ !== oldQ) {
+      this.setState({ ready: false });
+      this.fetchList();
+    }
   }
 
   componentWillUnMount = () => {
@@ -29,10 +38,10 @@ class SearchResult extends React.Component {
       type: 'jsonp'
     })
     .then(res => {
-      console.dir(res);
       this.setState({
         title: res.title,
-        subjects: res.subjects
+        subjects: res.subjects,
+        ready: true
       });
     })
     .fail((err, msg) => {
@@ -41,7 +50,7 @@ class SearchResult extends React.Component {
   }
 
   render = () => {
-    if (!this.state.title) return <Loading />;
+    if (!this.state.ready) return <Loading />;
 
     return (
       <div>
@@ -54,7 +63,3 @@ class SearchResult extends React.Component {
 }
 
 export default SearchResult;
-
-        // <div className="search-wrapper">
-        //   <Search />
-        // </div>

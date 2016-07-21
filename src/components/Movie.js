@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import Icon from './Icon';
@@ -16,8 +16,8 @@ const renderCelebrityName = (celebs) => {
   return res;
 }
 
-const Movie = (props) => {
-  let m = props.data;
+const Movie = ({data, inlineTitle, appBackground }) => {
+  let m = data;
   if (!m.title) {return null;}
   let countries = m.countries
     ? ' / ' + m.countries.join(',')
@@ -42,15 +42,15 @@ const Movie = (props) => {
     );
   let subjectTitle = null;
   let subjectTitleInline = null;
-  props.inlineTitle
+  inlineTitle
   ? subjectTitleInline = title
   : subjectTitle = title;
 
-  let heroClassName = props.inlineTitle
+  let heroClassName = inlineTitle
                     ? 'subject-hero'
                     : 'subject-hero small';
 
-  let bgClassName = props.appBackground
+  let bgClassName = appBackground
                   ? 'app-bg'
                   : 'subject-hero-bg';
 
@@ -86,8 +86,9 @@ const Movie = (props) => {
 }
 
 Movie.propTypes =  {
-  inlineTitle: React.PropTypes.bool,
-  appBackground: React.PropTypes.bool
+  data: PropTypes.object,
+  inlineTitle: PropTypes.bool,
+  appBackground: PropTypes.bool
 };
 
 export default Movie;

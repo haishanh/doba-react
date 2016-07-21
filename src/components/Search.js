@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
 
 import Icon from './Icon';
 
-class Search extends React.Component {
+class Search extends Component {
 
   state = {
     focused: false
@@ -50,8 +50,5 @@ class Search extends React.Component {
   }
 
 }
-
-Search.propTypes = {
-};
 
 export default Search;

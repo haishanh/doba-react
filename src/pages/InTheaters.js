@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import request from 'reqwest'
 import { Link } from 'react-router';
 
@@ -6,8 +6,9 @@ import MovieList from '../components/MovieList';
 import Loading from '../components/Loading';
 import Search from '../components/Search';
 
-class InTheaters extends React.Component {
+class InTheaters extends Component {
   state = {
+    ready: false,
     title: '',
     subjects: []
   }
@@ -28,10 +29,10 @@ class InTheaters extends React.Component {
       type: 'jsonp'
     })
     .then(res => {
-      console.dir(res);
       this.setState({
         title: res.title.replace(/-[\S]+$/,''),
-        subjects: res.subjects
+        subjects: res.subjects,
+        ready: true
       });
     })
     .fail((err, msg) => {
@@ -40,7 +41,7 @@ class InTheaters extends React.Component {
   }
 
   render = () => {
-    if (!this.state.title) return <Loading />;
+    if (!this.state.ready) return <Loading />;
 
     return (
       <div>

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import request from 'reqwest';
 
 import Loading from '../components/Loading';
 import Icon from '../components/Icon';
 
-class Celebrity extends React.Component {
+class Celebrity extends Component {
 
   state = {
     avatar: '',

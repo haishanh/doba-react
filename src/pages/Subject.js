@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import request from 'reqwest';
 import { Link } from 'react-router';
 
@@ -6,8 +6,9 @@ import Movie from '../components/Movie';
 import Cast from '../components/Cast';
 import Loading from '../components/Loading';
 
-class Subject extends React.Component {
+class Subject extends Component {
   state = {
+    ready: false,
     summary: ''
   }
 
@@ -18,7 +19,10 @@ class Subject extends React.Component {
   componentDidUpdate = (prevProps) => {
     let oldId = prevProps.params.id;
     let newId = this.props.params.id;
-    if (newId !== oldId) this.fetchSubject();
+    if (newId !== oldId) {
+      this.setState({ ready: false });
+      this.fetchSubject();
+    }
   }
 
   componentWillUnMount = () => {
@@ -36,7 +40,8 @@ class Subject extends React.Component {
       console.dir(res);
       this.setState({
         movie: res,
-        summary: res.summary
+        summary: res.summary,
+        ready: true
       });
     })
     .fail((err, msg) => {
@@ -45,10 +50,7 @@ class Subject extends React.Component {
   }
 
   render = () => {
-    console.log('this.state.movie');
-    console.log(this.state.movie);
-
-    if (!this.state.movie) return <Loading />;
+    if (!this.state.ready) return <Loading />;
 
     let casts = this.state.movie.casts.map((cast, idx) => {
       return <Cast {...cast} key={idx}/>;
@@ -73,5 +75,3 @@ class Subject extends React.Component {
 }
 
 export default Subject;
-
-//

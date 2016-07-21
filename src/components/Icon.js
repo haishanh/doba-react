@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-const Icon = props => {
-  let name = props.name;
+const Icon = ({ name }) => {
   let className = 'icon ' + name;
 
   return (
@@ -10,5 +9,9 @@ const Icon = props => {
     </svg>
   );
 }
+
+Icon.propTypes = {
+  name: PropTypes.string
+};
 
 export default Icon;

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import Icon from '../components/Icon';
 import Search from '../components/Search';
 
-class App extends React.Component {
+class App extends Component {
     render() {
         return (
           <div>
@@ -26,7 +26,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  children: React.PropTypes.node
+  children: PropTypes.node
 };
 
 export default App;
