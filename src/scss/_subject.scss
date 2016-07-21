@@ -1,4 +1,5 @@
 $subject-height: 600px; // TODO
+$subject-height-small: 520px;
 
 .subject-title {
   text-align: center;
@@ -16,6 +17,9 @@ $subject-height: 600px; // TODO
   height: $subject-height;
   position: relative;
   overflow: hidden;
+  &.small {
+    height: $subject-height-small;
+  }
 }
 
 .subject-hero-container {
@@ -51,6 +55,12 @@ $subject-height: 600px; // TODO
   width: 700px;
   margin: 0 auto;
   padding: 0 15px;
+  p {
+    background-color: #5a5a5a;
+    background-color: rgba(0,0,0,0.1);
+    margin: 1em 0;
+    padding: 10px;
+  }
 }
 
 .rating {

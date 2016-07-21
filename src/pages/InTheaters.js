@@ -6,7 +6,7 @@ import MovieList from '../components/MovieList';
 import Loading from '../components/Loading';
 import Search from '../components/Search';
 
-class In_theaters extends React.Component {
+class InTheaters extends React.Component {
   state = {
     title: '',
     subjects: []
@@ -30,7 +30,7 @@ class In_theaters extends React.Component {
     .then(res => {
       console.dir(res);
       this.setState({
-        title: res.title,
+        title: res.title.replace(/-[\S]+$/,''),
         subjects: res.subjects
       });
     })
@@ -52,4 +52,4 @@ class In_theaters extends React.Component {
   }
 }
 
-export default In_theaters;
+export default InTheaters;

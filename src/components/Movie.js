@@ -26,6 +26,7 @@ const Movie = (props) => {
   let backgroundImage = 'url(' + m.images.large +')';
   let directors = renderCelebrityName(m.directors);
   let casts = renderCelebrityName(m.casts);
+  let ratingsCount = m.ratings_count ? <div>{m.ratings_count}人评价</div> : null;
 
   let title = m.title === m.original_title
   ? (
@@ -45,6 +46,10 @@ const Movie = (props) => {
   ? subjectTitleInline = title
   : subjectTitle = title;
 
+  let heroClassName = props.inlineTitle
+                    ? 'subject-hero'
+                    : 'subject-hero small';
+
   let bgClassName = props.appBackground
                   ? 'app-bg'
                   : 'subject-hero-bg';
@@ -53,7 +58,7 @@ const Movie = (props) => {
   return (
     <section className="subject-header">
       {subjectTitle}
-      <section className="subject-hero">
+      <section className={heroClassName}>
         <div className="subject-hero-container">
           <Link to={'subject/' + m.id}>
             <img src={m.images.large} />
@@ -65,6 +70,7 @@ const Movie = (props) => {
               <span className="average">{m.rating.average}</span>
               <span className="max">/10</span>
             </div>
+            {ratingsCount}
             <div>{info}</div>
             <div>导演： {directors}</div>
             <div>主演： {casts}</div>
