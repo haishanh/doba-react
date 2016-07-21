@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import Icon from '../components/Icon';
 import Search from '../components/Search';
@@ -8,7 +9,9 @@ class App extends React.Component {
         return (
           <div>
             <div className="header">
-              <Icon name="doba" />
+              <Link to='/'>
+                <Icon name="doba" />
+              </Link>
               <div className="search-wrapper">
                 <Search />
               </div>

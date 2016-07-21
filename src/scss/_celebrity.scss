@@ -4,6 +4,12 @@
   margin: 0 auto;
 }
 
+.celebrity-image {
+  img {
+    max-width: 400px;
+  }
+}
+
 .celebrity-info {
   .douban-link {
     margin: 5px auto 0;

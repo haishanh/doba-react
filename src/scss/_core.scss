@@ -1,8 +1,11 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 html {
   background-color: #000; // I'm crazy
   color: #fff;
 }
-
 
 body {
   font-family: $font-base;

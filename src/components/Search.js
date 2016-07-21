@@ -4,6 +4,10 @@ import Icon from './Icon';
 
 class Search extends React.Component {
 
+  state = {
+    focused: false
+  }
+
   static contextTypes = {
     router: React.PropTypes.object
   }
@@ -12,7 +16,7 @@ class Search extends React.Component {
     if (e.keyCode === 13) {
       //let path = 'search?q=' + this.state.query;
       let path = 'search?q=' + this.refs.input.value;
-      // this.refs.input.value = '';
+      this.refs.input.value = '';
       this.context.router.push(path);
     }
   }
@@ -23,8 +27,12 @@ class Search extends React.Component {
   // }
 
   render = () => {
+
+    let searchBarClassName = this.state.focused
+                           ? 'search-bar focused'
+                           : 'search-bar';
     return (
-      <div className="search-bar">
+      <div className={searchBarClassName}>
         <div className="search-icon">
           <Icon name="search" />
         </div>
@@ -33,7 +41,8 @@ class Search extends React.Component {
           ref="input"
           type="text"
           onKeyDown={this.onKeyDown}
-          onChange={this.onChange}
+          onFocus={() => this.setState({focused: true})}
+          onBlur={() => this.setState({focused: false})}
           placeholder="搜索..."
         />
       </div>
