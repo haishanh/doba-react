@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "bundle": "webpack",
+    "build": "webpack --config webpack.prod.config.js --progress -p --colors",
     "start": "node server.js",
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
