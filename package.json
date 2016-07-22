@@ -10,9 +10,9 @@
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["react", "douban", "movie"],
+  "author": "Han Haishan <haishanhan@gmail.com> (htttp://hanhaishan.com)",
+  "license": "MIT",
   "dependencies": {
     "history": "^2.1.2",
     "react": "^15.1.0",
