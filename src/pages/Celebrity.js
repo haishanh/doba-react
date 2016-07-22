@@ -39,7 +39,6 @@ class Celebrity extends Component {
       type: 'jsonp'
     })
     .then(res => {
-      console.dir(res);
       this.setState({
         avatar: res.avatars.large,
         alt: res.alt,
