@@ -5,8 +5,8 @@ Built with react and react-router, using movie API from douban.com
 To run in your local environment.
 
 ```sh
-$ git clone https://github.com/haishanh/moba-react.git
-$ cd moba-react
+$ git clone https://github.com/haishanh/doba-react.git
+$ cd doba-react
 $ npm install
 $ npm start
 ```
