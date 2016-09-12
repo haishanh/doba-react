@@ -1,56 +1,48 @@
 import React, { Component } from 'react';
-import request from 'reqwest'
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 import MovieList from '../components/MovieList';
 import Loading from '../components/Loading';
 import Search from '../components/Search';
+import { fetchInTheaters } from '../actions';
 
 class InTheaters extends Component {
-  state = {
-    ready: false,
-    title: '',
-    subjects: []
-  }
 
   componentDidMount = () => {
-    this.fetchList();
+    this.request = this.props.fetchInTheaters();
   }
 
   componentWillUnMount = () => {
     this.request.abort();
   }
 
-  fetchList = () => {
-    let url = 'https://api.douban.com/v2/movie/in_theaters';
-
-    this.request = request({
-      url,
-      type: 'jsonp'
-    })
-    .then(res => {
-      this.setState({
-        title: res.title.replace(/-[\S]+$/,''),
-        subjects: res.subjects,
-        ready: true
-      });
-    })
-    .fail((err, msg) => {
-      console.log(err, msg);
-    });
-  }
-
   render = () => {
-    if (!this.state.ready) return <Loading />;
+    if (this.props.isFetching) return <Loading />;
 
     return (
       <div>
-
-        <div className="intheater title">{this.state.title}</div>
-        <MovieList subjects={this.state.subjects} inlineTitle />
+        <div className="intheater title">正在上映的电影</div>
+        <MovieList subjects={this.props.subjects} inlineTitle />
       </div>
     );
   }
 }
 
-export default InTheaters;
+function mapStateToProps(state) {
+  return {
+    isFetching: state.isFetching,
+    subjects: state.subjects,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchInTheaters: () => dispatch(fetchInTheaters()),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(InTheaters);

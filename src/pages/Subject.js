@@ -37,7 +37,6 @@ class Subject extends Component {
       type: 'jsonp'
     })
     .then(res => {
-      console.dir(res);
       this.setState({
         movie: res,
         summary: res.summary,

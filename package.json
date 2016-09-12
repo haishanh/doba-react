@@ -10,14 +10,23 @@
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["react", "douban", "movie"],
+  "keywords": [
+    "react",
+    "douban",
+    "movie"
+  ],
   "author": "Han Haishan <haishanhan@gmail.com> (htttp://hanhaishan.com)",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.13.0",
     "history": "^2.1.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
     "react-router": "^2.5.2",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
     "reqwest": "^2.0.5"
   },
   "devDependencies": {
