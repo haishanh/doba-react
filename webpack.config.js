@@ -9,8 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.bundle.js',
-    publicPath: '/static/'
+    filename: 'app.bundle.js'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
@@ -19,7 +18,7 @@ module.exports = {
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loaders: ['react-hot', 'babel-loader']
+      loaders: ['babel-loader']
     }, {
       test: /\.scss$/,
       loaders: ['style', 'css', 'postcss', 'sass']
