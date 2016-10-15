@@ -12,6 +12,11 @@ const compiler = webpack(config);
 new WebpackDevServer(compiler, {
   hot: true,
   contentBase: "dist",
+  stats: {
+    colors: true,
+    chunks: false,
+    chunkModules: false
+  },
   publicPath: config.output.publicPath,
   historyApiFallback: true
 }).listen(port, () => {

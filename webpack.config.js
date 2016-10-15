@@ -11,9 +11,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'app.bundle.js'
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
   module: {
     loaders: [{
       test: /\.js$/,
@@ -24,8 +21,15 @@ module.exports = {
       loaders: ['style', 'css', 'postcss', 'sass']
     }]
   },
-  sassLoader: {
-    outputStyle: 'expanded'
-  },
-  postcss: () => [autoprefixer]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        sassLoader: {
+          outputStyle: 'expanded'
+        },
+        postcss: () => [autoprefixer]
+      }
+    })
+  ]
 };

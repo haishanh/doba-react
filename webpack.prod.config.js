@@ -3,11 +3,15 @@ const devConfig = require('./webpack.config');
 
 const plugins = [
   new webpack.optimize.DedupePlugin(),
-  new webpack.optimize.UglifyJsPlugin({
+  // new webpack.optimize.UglifyJsPlugin({
+  //   minimize: true,
+  //   compress: {
+  //     warnings: false
+  //   }
+  // }),
+  new webpack.LoaderOptionsPlugin({
     minimize: true,
-    compress: {
-      warnings: false
-    }
+    debug: false
   }),
   new webpack.DefinePlugin({
     'process.env': {
