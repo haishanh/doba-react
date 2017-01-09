@@ -1,11 +1,11 @@
 @keyframes moveRight {
-  0% { margin-left: 0px; }
-  100% { margin-left: 30px; }
+  0% { transform: translate(-25px); }
+  100% { transform: translate(5px); }
 }
 
 @keyframes moveLeft {
-  0% { margin-right: 0px; }
-  100% { margin-right: 30px; }
+  0% { transform: translate(25px); }
+  100% { transform: translate(-5px); }
 }
 
 .loading {
@@ -25,14 +25,12 @@
 }
 
 .left {
-  transform: translateX(-25px);
   background-color: tomato;
   left: 50%;
   animation: moveRight 1s ease-in-out 0s infinite alternate;
 }
 
 .right {
-  transform: translateX(25px);
   background-color: green;
   right: 50%;
   animation: moveLeft 1s ease-in-out 0s infinite alternate;
