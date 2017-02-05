@@ -1,40 +1,57 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   devtool: 'eval',
   entry: {
-    app: ['./src/app.js']
+    app: ['./src/app.js'],
+    vendor: ['react', 'react-dom', 'react-router']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.bundle.js'
+    filename: '[name].bundle.js',
+    publicPath: '',
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loaders: ['babel-loader']
+      use: [
+        'babel-loader'
+      ]
     }, {
       test: /\.scss$/,
-      loaders: [
-        'style-loader',
-        'css-loader',
-        'postcss-loader',
-        'sass-loader'
-      ]
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('autoprefixer')
+              ]
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      })
     }]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        sassLoader: {
-          outputStyle: 'expanded'
-        },
-        postcss: () => [autoprefixer]
-      }
-    })
+    new ExtractTextPlugin({
+      filename: 'style.css',
+      allChunks: true
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity
+    }),
   ]
 };

@@ -1,17 +1,20 @@
-const config = require("./webpack.config.js");
+const config = require('./webpack.config');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 
 const port = process.argv[2] ? process.argv[2] - 0 : 3000;
 config.entry.app.unshift(
-  "webpack-dev-server/client?http://localhost:" + port + "/",
-  "webpack/hot/dev-server"
+  'webpack-dev-server/client?http://localhost:' + port,
+  'webpack/hot/dev-server'
+);
+config.plugins.push(
+  new webpack.HotModuleReplacementPlugin()
 );
 
 const compiler = webpack(config);
 new WebpackDevServer(compiler, {
-  hot: true,
-  contentBase: "dist",
+  hot: true,  // HMR pugin is also needed
+  contentBase: 'dist',
   stats: {
     colors: true,
     chunks: false,
