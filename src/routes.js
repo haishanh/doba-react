@@ -8,11 +8,11 @@ import Subject from './pages/Subject';
 import Celebrity from './pages/Celebrity';
 
 const routes = (
-  <Route path="/" component={ App }>
-    <IndexRoute component={ InTheaters } />
-    <Route path='subject/:id' component={ Subject } />
-    <Route path='celebrity/:id' component={ Celebrity } />
-    <Route path='search*' component={ SearchResult } />
+  <Route path="/" component={App}>
+    <IndexRoute component={InTheaters} />
+    <Route path="subject/:id" component={Subject} />
+    <Route path="celebrity/:id" component={Celebrity} />
+    <Route path="search*" component={SearchResult} />
   </Route>
 );
 

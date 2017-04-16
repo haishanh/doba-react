@@ -10,7 +10,7 @@ export default function configureStore() {
   const store = createStore(
     rootReducer,
     preloadedState,
-    applyMiddleware(thunkMiddleware, createLogger()),
+    applyMiddleware(thunkMiddleware, createLogger())
   );
 
   /* eslint-disable */

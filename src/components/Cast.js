@@ -13,9 +13,7 @@ name: 'Jon Snow'
  */
 
 const Cast = ({ avatars, name, id }) => {
-  let image = avatars && avatars.medium
-            ? <img src={avatars.medium} />
-            : null;
+  let image = avatars && avatars.medium ? <img src={avatars.medium} /> : null;
   return (
     <div className="wrap">
       <Link to={'celebrity/' + id}>
@@ -24,7 +22,7 @@ const Cast = ({ avatars, name, id }) => {
       </Link>
     </div>
   );
-}
+};
 
 Cast.propTypes = {
   avatars: PropTypes.object,
@@ -33,4 +31,3 @@ Cast.propTypes = {
 };
 
 export default Cast;
-

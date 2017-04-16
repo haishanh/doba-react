@@ -907,11 +907,7 @@ babylon@^6.11.0:
   version "6.11.4"
   resolved "http://registry.npm.taobao.org/babylon/download/babylon-6.11.4.tgz#75e1f52187efa0cde5a541a7f7fdda38f6eb5bd2"
 
-babylon@^6.15.0:
-  version "6.15.0"
-  resolved "http://registry.npm.taobao.org/babylon/download/babylon-6.15.0.tgz#ba65cfa1a80e1759b0e89fb562e27dccae70348e"
-
-babylon@^6.16.1:
+babylon@^6.15.0, babylon@^6.16.1:
   version "6.16.1"
   resolved "http://registry.npm.taobao.org/babylon/download/babylon-6.16.1.tgz#30c5a22f481978a9e7f8cdfdf496b11d94b404d3"
 

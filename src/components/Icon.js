@@ -5,10 +5,10 @@ const Icon = ({ name }) => {
 
   return (
     <svg className={className}>
-      <use xlinkHref={'#' + name}></use>
+      <use xlinkHref={'#' + name} />
     </svg>
   );
-}
+};
 
 Icon.propTypes = {
   name: PropTypes.string

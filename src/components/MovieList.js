@@ -2,8 +2,7 @@ import React, { PropTypes } from 'react';
 
 import Movie from './Movie';
 
-const MovieList = ({subjects, ...other}) => {
-
+const MovieList = ({ subjects, ...other }) => {
   let lists = subjects.map((movie, idx) => {
     return (
       <li key={idx}>
@@ -17,7 +16,7 @@ const MovieList = ({subjects, ...other}) => {
       {lists}
     </ul>
   );
-}
+};
 
 MovieList.propTypes = {
   subjects: PropTypes.arrayOf(PropTypes.object)

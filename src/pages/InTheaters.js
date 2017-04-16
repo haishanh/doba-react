@@ -8,14 +8,13 @@ import Search from '../components/Search';
 import { fetchInTheaters } from '../actions';
 
 class InTheaters extends Component {
-
   componentDidMount = () => {
     this.request = this.props.fetchInTheaters();
-  }
+  };
 
   componentWillUnMount = () => {
     this.request.abort();
-  }
+  };
 
   render = () => {
     if (this.props.isFetching) return <Loading />;
@@ -26,23 +25,20 @@ class InTheaters extends Component {
         <MovieList subjects={this.props.subjects} inlineTitle />
       </div>
     );
-  }
+  };
 }
 
 function mapStateToProps(state) {
   return {
     isFetching: state.isFetching,
-    subjects: state.subjects,
+    subjects: state.subjects
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchInTheaters: () => dispatch(fetchInTheaters()),
+    fetchInTheaters: () => dispatch(fetchInTheaters())
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(InTheaters);
+export default connect(mapStateToProps, mapDispatchToProps)(InTheaters);

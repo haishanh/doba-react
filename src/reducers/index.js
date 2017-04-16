@@ -1,16 +1,19 @@
 import { saveState } from '../utils';
 
-function reducer(state = {
-  isFetching: false,
-  // inTheaters: [],
-  subjects: [],
-  lastUpdate: new Date('1970'),
-  // celebrities: [],
-}, action) {
+function reducer(
+  state = {
+    isFetching: false,
+    // inTheaters: [],
+    subjects: [],
+    lastUpdate: new Date('1970')
+    // celebrities: [],
+  },
+  action
+) {
   switch (action.type) {
     case 'START_INTHEATERS':
       return Object.assign({}, state, {
-        isFetching: true,
+        isFetching: true
       });
     case 'DONE_INTHEATERS': {
       const newSubjects = action.data;
@@ -18,12 +21,12 @@ function reducer(state = {
       const lastUpdate = new Date();
       saveState({
         subjects,
-        lastUpdate,
+        lastUpdate
       });
       return Object.assign({}, state, {
         isFetching: false,
         subjects,
-        lastUpdate,
+        lastUpdate
       });
     }
 

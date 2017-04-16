@@ -1,4 +1,3 @@
-
 // INTHEATERS
 
 // START
@@ -14,7 +13,6 @@ let REQUEST;
 
 function fetchInTheaters() {
   return (dispatch, getState) => {
-
     // if we last updated in one hour
     // dispatch no action
     const lastUpdate = getState().lastUpdate;
@@ -25,28 +23,26 @@ function fetchInTheaters() {
     }
 
     dispatch({
-      type: 'START_INTHEATERS',
+      type: 'START_INTHEATERS'
     });
 
-    return REQUEST = request({
+    return (REQUEST = request({
       url: api + 'in_theaters',
       type: 'jsonp'
     })
-    .then( res => {
-      dispatch({
-        type: 'DONE_INTHEATERS',
-        data: res.subjects,
-      });
-    })
-    .fail((err, msg) => {
-      // TODO
-      dispatch({
-        type: 'FAIL_INTHEATERS',
-      });
-    });
+      .then(res => {
+        dispatch({
+          type: 'DONE_INTHEATERS',
+          data: res.subjects
+        });
+      })
+      .fail((err, msg) => {
+        // TODO
+        dispatch({
+          type: 'FAIL_INTHEATERS'
+        });
+      }));
   };
 }
 
-export {
-  fetchInTheaters,
-};
+export { fetchInTheaters };

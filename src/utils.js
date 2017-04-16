@@ -27,8 +27,4 @@ function clearState() {
   }
 }
 
-export {
-  loadState,
-  saveState,
-  clearState,
-};
+export { loadState, saveState, clearState };

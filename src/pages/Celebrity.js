@@ -6,7 +6,6 @@ import Loading from '../components/Loading';
 import Icon from '../components/Icon';
 
 class Celebrity extends Component {
-
   state = {
     avatar: '',
     alt: '',
@@ -15,21 +14,21 @@ class Celebrity extends Component {
     gender: '',
     born_place: '',
     works: []
-  }
+  };
 
   componentWillMount = () => {
     this.fetchCelebrity();
-  }
+  };
 
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate = prevProps => {
     let oldId = prevProps.params.id;
     let newId = this.props.params.id;
     if (newId !== oldId) this.fetchCelebrity();
-  }
+  };
 
   componentWillUnMount = () => {
     this.request.abort();
-  }
+  };
 
   fetchCelebrity = () => {
     let baseURL = 'https://api.douban.com/v2/movie/celebrity/';
@@ -38,23 +37,23 @@ class Celebrity extends Component {
       url: baseURL + this.props.params.id,
       type: 'jsonp'
     })
-    .then(res => {
-      this.setState({
-        avatar: res.avatars.large,
-        alt: res.alt,
-        name: res.name,
-        name_en: res.name_en,
-        gender: res.gender,
-        born_place: res.born_place,
-        works: res.works
+      .then(res => {
+        this.setState({
+          avatar: res.avatars.large,
+          alt: res.alt,
+          name: res.name,
+          name_en: res.name_en,
+          gender: res.gender,
+          born_place: res.born_place,
+          works: res.works
+        });
+      })
+      .fail((err, msg) => {
+        console.log(err, msg);
       });
-    })
-    .fail((err, msg) => {
-      console.log(err, msg);
-    });
-  }
+  };
 
-  renderWorks = (works) => {
+  renderWorks = works => {
     let items = works.map((work, idx) => {
       return (
         <div key={idx}>
@@ -74,7 +73,7 @@ class Celebrity extends Component {
         </div>
       </div>
     );
-  }
+  };
 
   render = () => {
     if (!this.state.name) return <Loading />;
@@ -83,10 +82,12 @@ class Celebrity extends Component {
 
     return (
       <div className="celebrity-page">
-        <div className="content-title">{this.state.name + ' ' + this.state.name_en}</div>
+        <div className="content-title">
+          {this.state.name + ' ' + this.state.name_en}
+        </div>
         <div className="celebrity-profile">
           <div className="celebrity-image">
-            <img src={this.state.avatar}/>
+            <img src={this.state.avatar} />
           </div>
           <div className="celebrity-info">
             <div>{'性别：' + this.state.gender}</div>
@@ -101,7 +102,7 @@ class Celebrity extends Component {
         {works}
       </div>
     );
-  }
+  };
 }
 
 export default Celebrity;

@@ -10,24 +10,24 @@ class Subject extends Component {
   state = {
     ready: false,
     summary: ''
-  }
+  };
 
   componentDidMount = () => {
     this.fetchSubject();
-  }
+  };
 
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate = prevProps => {
     let oldId = prevProps.params.id;
     let newId = this.props.params.id;
     if (newId !== oldId) {
       this.setState({ ready: false });
       this.fetchSubject();
     }
-  }
+  };
 
   componentWillUnMount = () => {
     this.request.abort();
-  }
+  };
 
   fetchSubject = () => {
     let baseURL = 'https://api.douban.com/v2/movie/subject/';
@@ -36,23 +36,23 @@ class Subject extends Component {
       url: baseURL + this.props.params.id,
       type: 'jsonp'
     })
-    .then(res => {
-      this.setState({
-        movie: res,
-        summary: res.summary,
-        ready: true
+      .then(res => {
+        this.setState({
+          movie: res,
+          summary: res.summary,
+          ready: true
+        });
+      })
+      .fail((err, msg) => {
+        console.log(err, msg);
       });
-    })
-    .fail((err, msg) => {
-      console.log(err, msg);
-    });
-  }
+  };
 
   render = () => {
     if (!this.state.ready) return <Loading />;
 
     let casts = this.state.movie.casts.map((cast, idx) => {
-      return <Cast {...cast} key={idx}/>;
+      return <Cast {...cast} key={idx} />;
     });
 
     return (
@@ -70,7 +70,7 @@ class Subject extends Component {
         </section>
       </div>
     );
-  }
+  };
 }
 
 export default Subject;

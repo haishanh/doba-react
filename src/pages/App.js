@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <div className="header">
-          <Link to='/'>
+          <Link to="/">
             <Icon name="doba" />
           </Link>
           <div className="search-wrapper">
@@ -23,7 +23,7 @@ class App extends Component {
             <span className="red">love</span>
             <span> by Haishan</span>
           </p>
-          <a href='https://github.com/haishanh/moba-react'>
+          <a href="https://github.com/haishanh/moba-react">
             <Icon name="github" />
           </a>
         </footer>
