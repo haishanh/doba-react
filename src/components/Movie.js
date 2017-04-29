@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import Icon from './Icon';
 
@@ -8,7 +8,7 @@ const renderCelebrityName = celebs => {
     return (
       <span key={idx}>
         {idx === 0 ? '' : ' / '}
-        <Link to={'celebrity/' + celeb.id}>{celeb.name}</Link>
+        <Link to={'/celebrity/' + celeb.id}>{celeb.name}</Link>
       </span>
     );
   });
@@ -49,7 +49,7 @@ const Movie = ({ data, inlineTitle, appBackground }) => {
       {subjectTitle}
       <section className={heroClassName}>
         <div className="subject-hero-container">
-          <Link to={'subject/' + m.id}>
+          <Link to={'/subject/' + m.id}>
             <img src={m.images.large} />
           </Link>
           <div className="subject-hero-info">

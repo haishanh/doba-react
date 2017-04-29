@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import request from 'reqwest';
 
 import Loading from '../components/Loading';
@@ -21,8 +21,8 @@ class Celebrity extends Component {
   };
 
   componentDidUpdate = prevProps => {
-    let oldId = prevProps.params.id;
-    let newId = this.props.params.id;
+    let oldId = prevProps.match.params.id;
+    let newId = this.props.match.params.id;
     if (newId !== oldId) this.fetchCelebrity();
   };
 
@@ -34,7 +34,7 @@ class Celebrity extends Component {
     let baseURL = 'https://api.douban.com/v2/movie/celebrity/';
 
     this.request = request({
-      url: baseURL + this.props.params.id,
+      url: baseURL + this.props.match.params.id,
       type: 'jsonp'
     })
       .then(res => {
@@ -57,7 +57,7 @@ class Celebrity extends Component {
     let items = works.map((work, idx) => {
       return (
         <div key={idx}>
-          <Link to={'subject/' + work.subject.id}>
+          <Link to={'/subject/' + work.subject.id}>
             <img src={work.subject.images.medium} />
             <div>{work.subject.title}</div>
           </Link>

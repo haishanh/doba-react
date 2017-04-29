@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import request from 'reqwest';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import Movie from '../components/Movie';
 import Cast from '../components/Cast';
@@ -17,8 +17,8 @@ class Subject extends Component {
   };
 
   componentDidUpdate = prevProps => {
-    let oldId = prevProps.params.id;
-    let newId = this.props.params.id;
+    let oldId = prevProps.match.params.id;
+    let newId = this.props.match.params.id;
     if (newId !== oldId) {
       this.setState({ ready: false });
       this.fetchSubject();
@@ -33,7 +33,7 @@ class Subject extends Component {
     let baseURL = 'https://api.douban.com/v2/movie/subject/';
 
     this.request = request({
-      url: baseURL + this.props.params.id,
+      url: baseURL + this.props.match.params.id,
       type: 'jsonp'
     })
       .then(res => {

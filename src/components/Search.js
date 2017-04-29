@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import Icon from './Icon';
 
@@ -14,9 +15,10 @@ class Search extends Component {
   onKeyDown = e => {
     if (e.keyCode === 13) {
       //let path = 'search?q=' + this.state.query;
-      let path = 'search?q=' + this.refs.input.value;
+      let path = '/search?q=' + this.refs.input.value;
       this.refs.input.value = '';
-      this.context.router.push(path);
+      // this.context.router.push(path);
+      this.props.history.push(path);
     }
   };
 
@@ -48,4 +50,4 @@ class Search extends Component {
   };
 }
 
-export default Search;
+export default withRouter(Search);

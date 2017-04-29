@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import request from 'reqwest';
-import { Link } from 'react-router';
 
 import MovieList from '../components/MovieList';
 import Loading from '../components/Loading';
@@ -17,9 +16,9 @@ class SearchResult extends Component {
   };
 
   componentDidUpdate = prevProps => {
-    let oldQ = prevProps.location.query.q;
-    let newQ = this.props.location.query.q;
-    if (newQ !== oldQ) {
+    let prevSearch = prevProps.location.search;
+    let thisSearch = this.props.location.search;
+    if (prevSearch !== thisSearch) {
       this.setState({ ready: false });
       this.fetchList();
     }
@@ -30,8 +29,8 @@ class SearchResult extends Component {
   };
 
   fetchList = () => {
-    let url = 'https://api.douban.com/v2/movie/search?q=';
-    url += this.props.location.query.q;
+    let url = 'https://api.douban.com/v2/movie/search';
+    url += this.props.location.search;
 
     this.request = request({
       url,
@@ -54,7 +53,6 @@ class SearchResult extends Component {
 
     return (
       <div>
-
         <div className="intheater title">{this.state.title}</div>
         <MovieList subjects={this.state.subjects} inlineTitle />
       </div>

@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'eval',
   entry: {
     app: ['./src/app.js'],
-    vendor: ['react', 'react-dom', 'react-router']
+    vendor: ['react', 'react-dom', 'redux', 'react-router-dom']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
