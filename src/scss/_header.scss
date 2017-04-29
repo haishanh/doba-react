@@ -1,6 +1,18 @@
 .header {
   text-align: center;
   padding: 2em 0;
+
+  a {
+    text-decoration: none;
+    display: block;
+    width: 240px;
+    margin: 0 auto;
+    transition: 1s;
+
+    &:hover {
+      filter: grayscale(1);
+    }
+  }
 }
 
 .doba {
