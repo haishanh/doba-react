@@ -6,3 +6,4 @@ dist/*.bundle.js
 deploy_ghpages.sh
 dist/style.css
 dist/style.css.map
+tags

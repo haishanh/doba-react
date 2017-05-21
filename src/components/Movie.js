@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 
 import Icon from './Icon';
+import star from '../svg/star.svg';
+import douban from '../svg/douban.svg';
 
 const renderCelebrityName = celebs => {
   let res = celebs.map((celeb, idx) => {
@@ -55,7 +57,7 @@ const Movie = ({ data, inlineTitle, appBackground }) => {
           <div className="subject-hero-info">
             {subjectTitleInline}
             <div className="rating">
-              <Icon name="star" />
+              <Icon name={star.id} />
               <span className="average">{m.rating.average}</span>
               <span className="max">/10</span>
             </div>
@@ -64,7 +66,7 @@ const Movie = ({ data, inlineTitle, appBackground }) => {
             <div>导演： {directors}</div>
             <div>主演： {casts}</div>
             <a href={m.alt}>
-              <div className="douban-link"><Icon name="douban" /></div>
+              <div className="douban-link"><Icon name={douban.id} /></div>
             </a>
           </div>
         </div>

@@ -12,37 +12,40 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    publicPath: '',
+    publicPath: ''
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: [
-        'babel-loader'
-      ]
-    }, {
-      test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [
-                require('autoprefixer')
-              ]
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [require('autoprefixer')]
+              }
+            },
+            {
+              loader: 'sass-loader'
             }
-          },
-          {
-            loader: 'sass-loader'
-          }
-        ]
-      })
-    }]
+          ]
+        })
+      }
+    ]
   },
   plugins: [
     new ExtractTextPlugin({
@@ -52,6 +55,6 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity
-    }),
+    })
   ]
 };

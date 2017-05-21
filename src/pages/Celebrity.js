@@ -4,6 +4,7 @@ import request from 'reqwest';
 
 import Loading from '../components/Loading';
 import Icon from '../components/Icon';
+import doban from '../svg/douban.svg';
 
 class Celebrity extends Component {
   state = {
@@ -94,7 +95,7 @@ class Celebrity extends Component {
             <div>{'出生地：' + this.state.born_place}</div>
             <div>
               <a href={this.state.alt}>
-                <div className="douban-link"><Icon name="douban" /></div>
+                <div className="douban-link"><Icon name={douban.id} /></div>
               </a>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Icon from './Icon';
+import search from '../svg/search.svg';
 
 class Search extends Component {
   state = {
@@ -34,7 +35,7 @@ class Search extends Component {
     return (
       <div className={searchBarClassName}>
         <div className="search-icon">
-          <Icon name="search" />
+          <Icon name={search.id} />
         </div>
         <input
           className="search-input"
