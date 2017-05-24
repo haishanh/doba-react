@@ -10,9 +10,7 @@ config.entry.app.unshift(
   'webpack-dev-server/client?http://0.0.0.0:' + port,
   'webpack/hot/dev-server'
 );
-config.plugins.push(
-  new webpack.HotModuleReplacementPlugin()
-);
+config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
 const compiler = webpack(config);
 new WebpackDevServer(compiler, {
