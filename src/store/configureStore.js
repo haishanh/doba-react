@@ -13,7 +13,6 @@ export default function configureStore() {
     applyMiddleware(thunkMiddleware, createLogger())
   );
 
-  /* eslint-disable */
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('../reducers', () => {
@@ -21,7 +20,6 @@ export default function configureStore() {
       store.replaceReducer(nextRootReducer);
     });
   }
-  /* eslint-enable */
 
   return store;
 }

@@ -1,7 +1,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 module.exports = {
   devtool: 'eval',
@@ -24,34 +24,10 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'svg-sprite-loader'
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader'
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [require('autoprefixer')]
-              }
-            },
-            {
-              loader: 'sass-loader'
-            }
-          ]
-        })
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: 'style.css',
-      allChunks: true
-    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity

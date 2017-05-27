@@ -1,21 +1,23 @@
-import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter as Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
+import { AppContainer } from 'react-hot-loader';
 
-import routes from './routes';
+import Root from './routes';
 
-import './scss/main.scss';
+const render = Component => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById('app')
+  );
+};
 
-const store = configureStore();
+render(Root);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      {routes}
-    </Router>
-  </Provider>,
-  document.getElementById('app')
-);
+// Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept('./routes', () => {
+    render(Root);
+  });
+}
