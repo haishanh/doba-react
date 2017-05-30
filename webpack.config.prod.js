@@ -37,6 +37,7 @@ const plugins = [
   })
 ];
 
+// https://webpack.js.org/configuration/devtool/
 baseConfig.devtool = 'source-map';
 baseConfig.module.rules.push(sassProdRule);
 baseConfig.plugins = [...baseConfig.plugins, ...plugins];

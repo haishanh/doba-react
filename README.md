@@ -9,8 +9,8 @@ To run in your local environment.
 ```sh
 $ git clone https://github.com/haishanh/doba-react.git
 $ cd doba-react
-$ npm install
-$ npm start
+$ yarn
+$ yarn start
 ```
 
 Then open `http://localhost:3000` in your browser.
@@ -18,7 +18,7 @@ Then open `http://localhost:3000` in your browser.
 To build for production usage:
 
 ```sh
-$ npm run build
+$ yarn build
 ```
 
 [`react-router`](https://github.com/reactjs/react-router) is used, checkout these links:
