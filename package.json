@@ -51,6 +51,7 @@
     "style-loader": "^0.18.1",
     "svg-sprite-loader": "^3.0.2",
     "webpack": "^2.6.1",
+    "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-server": "^2.4.5"
   }
 }

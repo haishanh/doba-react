@@ -1,5 +1,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 // const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
@@ -35,6 +37,7 @@ module.exports = {
       name: 'vendor',
       minChunks: Infinity
     }),
+    new BundleAnalyzerPlugin(),
     // new FaviconsWebpackPlugin({
     //   logo: path.resolve(__dirname, 'src', 'doba.png'),
     //   theme_color: '#000000',

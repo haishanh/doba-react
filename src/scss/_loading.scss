@@ -1,11 +1,19 @@
 @keyframes moveRight {
-  0% { transform: translate(-25px); }
-  100% { transform: translate(5px); }
+  0% {
+    transform: translate(-25px);
+  }
+  100% {
+    transform: translate(5px);
+  }
 }
 
 @keyframes moveLeft {
-  0% { transform: translate(25px); }
-  100% { transform: translate(-5px); }
+  0% {
+    transform: translate(25px);
+  }
+  100% {
+    transform: translate(-5px);
+  }
 }
 
 .loading {

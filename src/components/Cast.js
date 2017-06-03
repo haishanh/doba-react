@@ -16,7 +16,7 @@ const Cast = ({ avatars, name, id }) => {
   let image = avatars && avatars.medium ? <img src={avatars.medium} /> : null;
   return (
     <div className="wrap">
-      <Link to={'celebrity/' + id}>
+      <Link to={'/celebrity/' + id}>
         {image}
         <div>{name}</div>
       </Link>
