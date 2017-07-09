@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Icon from './Icon';
@@ -10,7 +11,9 @@ const renderCelebrityName = celebs => {
     return (
       <span key={idx}>
         {idx === 0 ? '' : ' / '}
-        <Link to={'/celebrity/' + celeb.id}>{celeb.name}</Link>
+        <Link to={'/celebrity/' + celeb.id}>
+          {celeb.name}
+        </Link>
       </span>
     );
   });
@@ -28,16 +31,27 @@ const Movie = ({ data, inlineTitle, appBackground }) => {
   let backgroundImage = 'url(' + m.images.large + ')';
   let directors = renderCelebrityName(m.directors);
   let casts = renderCelebrityName(m.casts);
-  let ratingsCount = m.ratings_count ? <div>{m.ratings_count}人评价</div> : null;
-
-  let title = m.title === m.original_title
-    ? <div className="subject-title">
-        <div className="title-1">{m.title}</div>
+  let ratingsCount = m.ratings_count
+    ? <div>
+        {m.ratings_count}人评价
       </div>
-    : <div className="subject-title">
-        <div className="title-1">{m.title}</div>
-        <div className="title-2">{m.original_title}</div>
-      </div>;
+    : null;
+
+  let title =
+    m.title === m.original_title
+      ? <div className="subject-title">
+          <div className="title-1">
+            {m.title}
+          </div>
+        </div>
+      : <div className="subject-title">
+          <div className="title-1">
+            {m.title}
+          </div>
+          <div className="title-2">
+            {m.original_title}
+          </div>
+        </div>;
   let subjectTitle = null;
   let subjectTitleInline = null;
   inlineTitle ? (subjectTitleInline = title) : (subjectTitle = title);
@@ -58,15 +72,25 @@ const Movie = ({ data, inlineTitle, appBackground }) => {
             {subjectTitleInline}
             <div className="rating">
               <Icon name={star.id} />
-              <span className="average">{m.rating.average}</span>
+              <span className="average">
+                {m.rating.average}
+              </span>
               <span className="max">/10</span>
             </div>
             {ratingsCount}
-            <div>{info}</div>
-            <div>导演： {directors}</div>
-            <div>主演： {casts}</div>
+            <div>
+              {info}
+            </div>
+            <div>
+              导演： {directors}
+            </div>
+            <div>
+              主演： {casts}
+            </div>
             <a href={m.alt}>
-              <div className="douban-link"><Icon name={douban.id} /></div>
+              <div className="douban-link">
+                <Icon name={douban.id} />
+              </div>
             </a>
           </div>
         </div>

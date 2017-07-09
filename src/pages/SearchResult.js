@@ -53,7 +53,9 @@ class SearchResult extends Component {
 
     return (
       <div>
-        <div className="intheater title">{this.state.title}</div>
+        <div className="intheater title">
+          {this.state.title}
+        </div>
         <MovieList subjects={this.state.subjects} inlineTitle />
       </div>
     );

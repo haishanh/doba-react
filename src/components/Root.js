@@ -14,7 +14,7 @@ import '../scss/main.scss';
 
 const store = configureStore();
 
-const Root = () => (
+const Root = () =>
   <Provider store={store}>
     <Router>
       <App>
@@ -26,7 +26,6 @@ const Root = () => (
         </Switch>
       </App>
     </Router>
-  </Provider>
-);
+  </Provider>;
 
 export default Root;
