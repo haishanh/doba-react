@@ -34,7 +34,9 @@ const plugins = [
   new ExtractTextPlugin({
     filename: 'style.css',
     allChunks: true
-  })
+  }),
+  // for webpack 3 to enable scope hoisting
+  new webpack.optimize.ModuleConcatenationPlugin()
 ];
 
 // https://webpack.js.org/configuration/devtool/

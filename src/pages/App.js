@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Icon from '../components/Icon';
@@ -18,7 +19,9 @@ class App extends Component {
             <Search />
           </div>
         </div>
-        <div className="content">{this.props.children}</div>
+        <div className="content">
+          {this.props.children}
+        </div>
         <footer>
           <p>
             <span>Made with </span>

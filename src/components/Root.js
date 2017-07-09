@@ -1,19 +1,20 @@
+import 'babel-polyfill';
 import React from 'react';
 import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
+import configureStore from '../store/configureStore';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
-import App from './pages/App';
-import InTheaters from './pages/InTheaters';
-import SearchResult from './pages/SearchResult';
-import Subject from './pages/Subject';
-import Celebrity from './pages/Celebrity';
+import App from '../pages/App';
+import InTheaters from '../pages/InTheaters';
+import SearchResult from '../pages/SearchResult';
+import Subject from '../pages/Subject';
+import Celebrity from '../pages/Celebrity';
 
-import './scss/main.scss';
+import '../scss/main.scss';
 
 const store = configureStore();
 
-const Root = () => (
+const Root = () =>
   <Provider store={store}>
     <Router>
       <App>
@@ -25,7 +26,6 @@ const Root = () => (
         </Switch>
       </App>
     </Router>
-  </Provider>
-);
+  </Provider>;
 
 export default Root;

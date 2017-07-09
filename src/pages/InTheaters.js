@@ -5,9 +5,23 @@ import { connect } from 'react-redux';
 import MovieList from '../components/MovieList';
 import Loading from '../components/Loading';
 import Search from '../components/Search';
-import { fetchInTheaters } from '../actions';
+import { fetchInTheaters } from '../ducks/inTheaters';
 
-class InTheaters extends Component {
+function mapStateToProps(state) {
+  return {
+    isFetching: state.inTheaters.isFetching,
+    subjects: state.inTheaters.subjects
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchInTheaters: () => dispatch(fetchInTheaters())
+  };
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
+export default class InTheaters extends Component {
   componentDidMount = () => {
     this.request = this.props.fetchInTheaters();
   };
@@ -27,18 +41,3 @@ class InTheaters extends Component {
     );
   };
 }
-
-function mapStateToProps(state) {
-  return {
-    isFetching: state.isFetching,
-    subjects: state.subjects
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchInTheaters: () => dispatch(fetchInTheaters())
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(InTheaters);

@@ -66,7 +66,9 @@ class Subject extends Component {
         </section>
         <section className="subject-content">
           <div className="title">剧情简介</div>
-          <p>{this.state.summary}</p>
+          <p>
+            {this.state.summary}
+          </p>
         </section>
       </div>
     );

@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /*
 alt: "https://movie.douban.com/celebrity/01234",
@@ -18,7 +19,9 @@ const Cast = ({ avatars, name, id }) => {
     <div className="wrap">
       <Link to={'/celebrity/' + id}>
         {image}
-        <div>{name}</div>
+        <div>
+          {name}
+        </div>
       </Link>
     </div>
   );

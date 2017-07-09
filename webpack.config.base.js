@@ -1,11 +1,35 @@
 const path = require('path');
-const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 // const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const webpack = require('webpack');
+
+process.env.BABEL_ENV = process.env.NODE_ENV;
+
+// loader rules
+const jsRule = {
+  test: /\.js$/,
+  exclude: /node_modules/,
+  use: ['babel-loader']
+};
+
+const svgSpriteRule = {
+  test: /\.svg$/,
+  use: ['svg-sprite-loader']
+};
+
+const cssRule = {
+  test: /\.css$/,
+  use: ['style-loader', 'css-loader']
+};
+
+// plugins
+const commonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
+  name: 'vendor',
+  minChunks: Infinity
+});
 
 module.exports = {
   devtool: 'eval',
@@ -20,24 +44,11 @@ module.exports = {
     publicPath: ''
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      },
-      {
-        test: /\.svg$/,
-        loader: 'svg-sprite-loader'
-      }
-    ]
+    rules: [jsRule, svgSpriteRule, cssRule]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity
-    }),
-    new BundleAnalyzerPlugin(),
+    commonsChunkPlugin,
+    // new BundleAnalyzerPlugin(),
     // new FaviconsWebpackPlugin({
     //   logo: path.resolve(__dirname, 'src', 'doba.png'),
     //   theme_color: '#000000',

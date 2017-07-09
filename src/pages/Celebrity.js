@@ -60,7 +60,9 @@ class Celebrity extends Component {
         <div key={idx}>
           <Link to={'/subject/' + work.subject.id}>
             <img src={work.subject.images.medium} />
-            <div>{work.subject.title}</div>
+            <div>
+              {work.subject.title}
+            </div>
           </Link>
         </div>
       );
@@ -91,11 +93,17 @@ class Celebrity extends Component {
             <img src={this.state.avatar} />
           </div>
           <div className="celebrity-info">
-            <div>{'性别：' + this.state.gender}</div>
-            <div>{'出生地：' + this.state.born_place}</div>
+            <div>
+              {'性别：' + this.state.gender}
+            </div>
+            <div>
+              {'出生地：' + this.state.born_place}
+            </div>
             <div>
               <a href={this.state.alt}>
-                <div className="douban-link"><Icon name={douban.id} /></div>
+                <div className="douban-link">
+                  <Icon name={douban.id} />
+                </div>
               </a>
             </div>
           </div>
