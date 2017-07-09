@@ -35,8 +35,14 @@ module.exports = {
   devtool: 'eval',
   // https://webpack.js.org/configuration/devtool/
   entry: {
-    app: ['./src/app.js'],
-    vendor: ['react', 'react-dom', 'redux', 'react-router-dom']
+    vendor: [
+      'babel-polyfill',
+      'react',
+      'react-dom',
+      'redux',
+      'react-router-dom'
+    ],
+    app: ['./src/app.js']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
