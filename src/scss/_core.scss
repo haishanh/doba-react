@@ -1,4 +1,6 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -38,7 +40,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: #82F9F9;
+  color: #82f9f9;
   &:hover {
     color: #037979;
   }

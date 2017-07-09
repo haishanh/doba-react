@@ -1,18 +1,20 @@
 @keyframes moveRight {
   0% {
-    transform: translate(-25px);
+    transform: translate(-50px);
   }
+
   100% {
-    transform: translate(5px);
+    transform: translate(10px);
   }
 }
 
 @keyframes moveLeft {
   0% {
-    transform: translate(25px);
+    transform: translate(50px);
   }
+
   100% {
-    transform: translate(-5px);
+    transform: translate(-10px);
   }
 }
 
@@ -25,21 +27,21 @@
 }
 
 .circle {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   position: absolute;
   top: 50%;
 }
 
 .left {
-  background-color: tomato;
+  background-color: #fd4545;
   left: 50%;
   animation: moveRight 1s ease-in-out 0s infinite alternate;
 }
 
 .right {
-  background-color: green;
+  background-color: #f7f7f7;
   right: 50%;
   animation: moveLeft 1s ease-in-out 0s infinite alternate;
 }

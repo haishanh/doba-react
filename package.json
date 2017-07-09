@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.prod.js --progress -p --colors",
     "start": "NODE_ENV=development node server.js",
-    "pretty": "prettier --single-quote --write 'src/**/*.js'",
+    "pretty": "prettier --single-quote --write 'src/**/*.{js,scss}'",
     "deploy": "rm -rf dist/*.map && deploy -d dist -b gh-pages"
   },
   "keywords": [
