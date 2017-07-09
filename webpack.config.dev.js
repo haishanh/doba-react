@@ -1,6 +1,7 @@
 'use strict';
 
 const baseConfig = require('./webpack.config.base');
+const autoprefixer = require('autoprefixer');
 
 const sassDevRule = {
   test: /\.scss$/,
@@ -14,7 +15,7 @@ const sassDevRule = {
     {
       loader: 'postcss-loader',
       options: {
-        plugins: () => [require('autoprefixer')]
+        plugins: () => [autoprefixer]
       }
     },
     {

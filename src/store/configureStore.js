@@ -10,6 +10,8 @@ export default function configureStore() {
   const store = createStore(
     rootReducer,
     preloadedState,
+    // should remove logger middleware from prod build
+    // but...I don't really care for such an app
     applyMiddleware(thunkMiddleware, createLogger())
   );
 
