@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 import MovieList from '../components/MovieList';
 import Loading from '../components/Loading';
 import Search from '../components/Search';
-import { fetchInTheaters } from '../actions';
+import { fetchInTheaters } from '../ducks/inTheaters';
 
 function mapStateToProps(state) {
   return {
-    isFetching: state.isFetching,
-    subjects: state.subjects
+    isFetching: state.inTheaters.isFetching,
+    subjects: state.inTheaters.subjects
   };
 }
 
