@@ -21,13 +21,14 @@ To build for production usage:
 $ yarn build
 ```
 
-[`react-router`](https://github.com/reactjs/react-router) is used, checkout these links:
+[`react-router`][react-router] is used, checkout these links:
 
   * [https://haishanh.github.io/doba-react/#/subject/5045678][route0]
   * [https://haishanh.github.io/doba-react/#/subject/26754831][route3]
   * [https://haishanh.github.io/doba-react/#/celebrity/1044700][route1]
   * [https://haishanh.github.io/doba-react/#/search?q=tom%20hanks][route2]
 
+[react-router]: https://github.com/ReactTraining/react-router
 [route0]: https://haishanh.github.io/doba-react/#/subject/5045678
 [route1]: https://haishanh.github.io/doba-react/#/celebrity/1044700
 [route2]: https://haishanh.github.io/doba-react/#/search?q=tom%20hanks
