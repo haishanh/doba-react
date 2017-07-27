@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import { bindActionCreators } from 'redux';
 
 import Icon from './Icon';
 import search from '../svg/search.svg';
 
-class Search extends Component {
+const mapStateToProps = null;
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ push }, dispatch)
+  };
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
+export default class Search extends Component {
   state = {
     focused: false
-  };
-
-  static contextTypes = {
-    router: React.PropTypes.object
   };
 
   onKeyDown = e => {
@@ -18,8 +25,8 @@ class Search extends Component {
       //let path = 'search?q=' + this.state.query;
       let path = '/search?q=' + this.refs.input.value;
       this.refs.input.value = '';
-      // this.context.router.push(path);
-      this.props.history.push(path);
+      this.props.actions.push(path);
+      // this.props.history.push(path);
     }
   };
 
@@ -50,5 +57,3 @@ class Search extends Component {
     );
   };
 }
-
-export default withRouter(Search);

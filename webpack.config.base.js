@@ -32,8 +32,9 @@ const commonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
 });
 
 module.exports = {
-  devtool: 'eval',
   // https://webpack.js.org/configuration/devtool/
+  devtool: 'eval',
+
   entry: {
     vendor: [
       'babel-polyfill',
@@ -44,14 +45,17 @@ module.exports = {
     ],
     app: ['./src/app.js']
   },
+
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
     publicPath: ''
   },
+
   module: {
     rules: [jsRule, svgSpriteRule, cssRule]
   },
+
   plugins: [
     commonsChunkPlugin,
     // new BundleAnalyzerPlugin(),
