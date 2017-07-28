@@ -56,9 +56,11 @@ $subject-height-small: 520px;
   padding: 0 15px;
   p {
     background-color: #5a5a5a;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
     margin: 1em 0;
-    padding: 10px;
+    padding: 14px;
+    border-radius: 14px;
+    line-height: 25px;
   }
 }
 

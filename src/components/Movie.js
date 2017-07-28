@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import Rating from './Rating';
 import Icon from './Icon';
-import star from '../svg/star.svg';
 import douban from '../svg/douban.svg';
 
 const renderCelebrityName = celebs => {
@@ -21,11 +21,9 @@ const renderCelebrityName = celebs => {
   return res;
 };
 
-const Movie = ({ data, inlineTitle, appBackground }) => {
-  let m = data;
-  if (!m.title) {
-    return null;
-  }
+const Movie = ({ data: m, inlineTitle, appBackground }) => {
+  if (!m.title) return null;
+
   let countries = m.countries ? ' / ' + m.countries.join(',') : '';
   let info = m.year + countries + ' / ' + m.genres.join(',');
   let backgroundImage = 'url(' + m.images.large + ')';
@@ -70,13 +68,7 @@ const Movie = ({ data, inlineTitle, appBackground }) => {
           </Link>
           <div className="subject-hero-info">
             {subjectTitleInline}
-            <div className="rating">
-              <Icon name={star.id} />
-              <span className="average">
-                {m.rating.average}
-              </span>
-              <span className="max">/10</span>
-            </div>
+            <Rating rating={m.rating} />
             {ratingsCount}
             <div>
               {info}

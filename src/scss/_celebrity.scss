@@ -1,16 +1,32 @@
 .celebrity-profile {
-  text-align: center;
   width: 700px;
   margin: 0 auto;
 }
 
 .celebrity-image {
+  height: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   img {
-    max-width: 400px;
+    max-height: 430px;
   }
 }
 
 .celebrity-info {
+  text-align: center;
+
+  p {
+    margin: 8px 0;
+  }
+
+  a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .douban-link {
     margin: 5px auto 0;
   }
@@ -19,13 +35,45 @@
 .celebrity-works {
   width: 800px;
   margin: 0 auto;
+
+  .work {
+    transition: color 0.1s cubic-bezier(0.4, 0, 1, 1) 0.2s;
+
+    .mask {
+      transition: transform 0.1s cubic-bezier(0.4, 0, 1, 1) 0.2s;
+    }
+
+    .work__cover {
+      // transform: scale(1);
+      transition: transform 0.1s cubic-bezier(0.4, 0, 1, 1) 0.2s;
+    }
+
+    &:hover {
+      color: #fff;
+
+      .mask {
+        transform: translate(-100%, -100%);
+      }
+
+      .work__cover {
+        transform: scale(1.1);
+      }
+    }
+  }
 }
 
 .celebrity-works-flex {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  div {
-    text-align: center;
+
+  a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      padding: 10px 0;
+    }
   }
 }
