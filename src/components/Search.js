@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Icon from './Icon';
