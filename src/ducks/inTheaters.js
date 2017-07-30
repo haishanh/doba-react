@@ -1,5 +1,5 @@
 import request from 'reqwest';
-import { saveState } from '../utils';
+import { saveState } from '../lib/storage';
 
 const api = 'https://api.douban.com/v2/movie/';
 const oneHour = 60 * 60 * 1000;

@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 // import { createLogger } from 'redux-logger';
 import rootReducer from '../ducks';
-import { loadState } from '../utils';
+import { loadState } from '../lib/storage';
 import { routerMiddleware } from 'react-router-redux';
 
 const preloadedState = loadState();
