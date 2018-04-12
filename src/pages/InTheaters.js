@@ -24,11 +24,11 @@ function mapDispatchToProps(dispatch) {
 export default class InTheaters extends Component {
   componentDidMount() {
     this.request = this.props.fetchInTheaters();
-  };
+  }
 
   componentWillUnMount() {
     this.request.abort();
-  };
+  }
 
   render() {
     if (this.props.isFetching) return <Loading />;
@@ -39,5 +39,5 @@ export default class InTheaters extends Component {
         <MovieList subjects={this.props.subjects} inlineTitle />
       </div>
     );
-  };
+  }
 }
