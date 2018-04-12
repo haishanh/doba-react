@@ -22,15 +22,15 @@ function mapDispatchToProps(dispatch) {
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class InTheaters extends Component {
-  componentDidMount = () => {
+  componentDidMount() {
     this.request = this.props.fetchInTheaters();
   };
 
-  componentWillUnMount = () => {
+  componentWillUnMount() {
     this.request.abort();
   };
 
-  render = () => {
+  render() {
     if (this.props.isFetching) return <Loading />;
 
     return (
