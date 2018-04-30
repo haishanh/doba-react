@@ -39,10 +39,11 @@ ul {
 }
 
 a {
+  $c: #82f9f9;
   text-decoration: none;
   color: #82f9f9;
   &:hover {
-    color: #037979;
+    color: darken($c, 40%);
   }
 }
 

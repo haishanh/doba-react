@@ -1,9 +1,23 @@
 .subject-casts {
-  width: 700px;
+  width: 94%;
+  min-width: 700px;
   margin: 0 auto;
   text-align: center;
   .wrap {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    a {
+      display: block;
+    }
+
+    img {
+      max-width: 200px;
+    }
+
+    margin: 10px 20px;
   }
   .casts-title {
     font-size: 2em;
@@ -16,5 +30,5 @@
 .subject-casts-flex {
   display: flex;
   justify-content: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
