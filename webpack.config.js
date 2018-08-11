@@ -7,7 +7,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 const HTMLPlugin = require('html-webpack-plugin');
 const html = new HTMLPlugin({
-  title: 'test app',
+  title: 'Doba Movie',
   template: 'src/index.template.ejs',
   inject: false,
   filename: 'index.html'
@@ -29,7 +29,7 @@ const entry = {
 const output = {
   path: path.resolve(__dirname, 'public'),
   filename: isDev ? '[name].bundle.js' : '[name].[chunkhash].js',
-  publicPath: '/'
+  publicPath: ''
 };
 
 const vendor = [
