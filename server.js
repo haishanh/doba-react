@@ -1,43 +1,63 @@
 'use strict';
 
 const path = require('path');
-const config = require('./webpack.config.dev');
+const config = require('./webpack.config');
 const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
+const express = require('express');
+const app = express();
 
-const port = process.argv[2] ? process.argv[2] - 0 : 3000;
+const devMiddleware = require('webpack-dev-middleware');
+const hotMiddleware = require('webpack-hot-middleware');
+
+const { PORT } = process.env;
+const port = PORT ? Number(PORT) : 3000;
+
 config.entry.app.unshift(
-  'react-hot-loader/patch',
   // activate HMR for React
+  // 'react-hot-loader/patch',
 
-  'webpack-dev-server/client?http://0.0.0.0:' + port,
-  // bundle the client for webpack-dev-server
-  // and connect to the provided endpoint
-
-  'webpack/hot/only-dev-server'
-  // bundle the client for hot reloading
-  // only- means to only hot reload for successful updates
+  'webpack-hot-middleware/client'
+  // // bundle the client for webpack-dev-server
+  // // and connect to the provided endpoint
+  // 'webpack-dev-server/client?http://0.0.0.0:' + port,
+  // // bundle the client for hot reloading
+  // // only- means to only hot reload for successful updates
+  // 'webpack/hot/only-dev-server'
 );
 config.plugins.push(
-  new webpack.HotModuleReplacementPlugin(),
   // enable HMR globally
-
-  new webpack.NamedModulesPlugin()
+  new webpack.HotModuleReplacementPlugin(),
   // prints more readable module names in the browser console on HMR updates
+  new webpack.NamedModulesPlugin()
 );
 
 const compiler = webpack(config);
-new WebpackDevServer(compiler, {
-  hot: true,
-  // enable HMR on the server
-  contentBase: path.join(__dirname, 'dist'),
-  stats: {
-    colors: true,
-    chunks: false,
-    chunkModules: false
-  },
-  publicPath: config.output.publicPath,
-  historyApiFallback: true
-}).listen(port, '0.0.0.0', () => {
+// webpack-dev-server config
+const publicPath = config.output.publicPath;
+const stats = {
+  colors: true,
+  cached: false,
+  cachedAssets: false,
+  chunks: false,
+  chunkModules: false
+};
+
+const options = { publicPath, stats };
+
+app.use(devMiddleware(compiler, options));
+app.use(hotMiddleware(compiler));
+
+app.use('*', (req, res, next) => {
+  const filename = path.join(compiler.outputPath, 'index.html');
+  compiler.outputFileSystem.readFile(filename, (err, result) => {
+    if (err) return next(err);
+
+    res.set('content-type', 'text/html');
+    res.send(result);
+    res.end();
+  });
+});
+
+app.listen(port, '0.0.0.0', () => {
   console.log('\n>> Listening at http://0.0.0.0:' + port + '\n');
 });

@@ -7,18 +7,14 @@ import Icon from './Icon';
 import douban from '../svg/douban.svg';
 
 const renderCelebrityName = celebs => {
-  let res = celebs.map((celeb, idx) => {
+  return celebs.map((celeb, idx) => {
     return (
       <span key={idx}>
-        {idx === 0 ? '' : ' / '}
-        <Link to={'/celebrity/' + celeb.id}>
-          {celeb.name}
-        </Link>
+        {idx === 0 ? null : <span style={{ color: '#ccc' }}>{' / '}</span>}
+        <Link to={'/celebrity/' + celeb.id}>{celeb.name}</Link>
       </span>
     );
   });
-
-  return res;
 };
 
 const Movie = ({ data: m, inlineTitle, appBackground }) => {
@@ -29,27 +25,24 @@ const Movie = ({ data: m, inlineTitle, appBackground }) => {
   let backgroundImage = 'url(' + m.images.large + ')';
   let directors = renderCelebrityName(m.directors);
   let casts = renderCelebrityName(m.casts);
-  let ratingsCount = m.ratings_count
-    ? <div>
-        {m.ratings_count}人评价
-      </div>
-    : null;
+  let ratingsCount = m.ratings_count ? (
+    <div>
+      {m.ratings_count}
+      人评价
+    </div>
+  ) : null;
 
   let title =
-    m.title === m.original_title
-      ? <div className="subject-title">
-          <div className="title-1">
-            {m.title}
-          </div>
-        </div>
-      : <div className="subject-title">
-          <div className="title-1">
-            {m.title}
-          </div>
-          <div className="title-2">
-            {m.original_title}
-          </div>
-        </div>;
+    m.title === m.original_title ? (
+      <div className="subject-title">
+        <div className="title-1">{m.title}</div>
+      </div>
+    ) : (
+      <div className="subject-title">
+        <div className="title-1">{m.title}</div>
+        <div className="title-2">{m.original_title}</div>
+      </div>
+    );
   let subjectTitle = null;
   let subjectTitleInline = null;
   inlineTitle ? (subjectTitleInline = title) : (subjectTitle = title);
@@ -70,15 +63,9 @@ const Movie = ({ data: m, inlineTitle, appBackground }) => {
             {subjectTitleInline}
             <Rating rating={m.rating} />
             {ratingsCount}
-            <div>
-              {info}
-            </div>
-            <div>
-              导演： {directors}
-            </div>
-            <div>
-              主演： {casts}
-            </div>
+            <div>{info}</div>
+            <div>导演： {directors}</div>
+            <div>主演： {casts}</div>
             <a href={m.alt}>
               <div className="douban-link">
                 <Icon name={douban.id} />

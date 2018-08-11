@@ -18,7 +18,7 @@ footer {
   display: flex;
   flex-direction: column;
   svg.github {
-    fill: #eee;
+    color: #777;
     width: 24px;
     height: 24px;
   }
@@ -39,9 +39,9 @@ ul {
 }
 
 a {
-  $c: #82f9f9;
+  $c: #59cafa;
   text-decoration: none;
-  color: #82f9f9;
+  color: $c;
   &:hover {
     color: darken($c, 40%);
   }

@@ -6,16 +6,17 @@
   margin-top: 5px;
   height: $sz;
   width: $sz;
+  transition: border-color 0.5s;
   .douban {
-    fill: #3ca353;
-    fill: #fff;
+    transition: color 0.5s;
+    color: #fff;
     height: 100%;
     width: 100%;
   }
   &:hover {
     border-color: #3ca353;
     .douban {
-      fill: #3ca353;
+      color: #3ca353;
     }
   }
 }
