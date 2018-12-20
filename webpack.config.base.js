@@ -36,13 +36,7 @@ module.exports = {
   devtool: 'eval',
 
   entry: {
-    vendor: [
-      'babel-polyfill',
-      'react',
-      'react-dom',
-      'redux',
-      'react-router-dom'
-    ],
+    vendor: ['react', 'react-dom', 'redux', 'react-router-dom'],
     app: ['./src/app.js']
   },
 

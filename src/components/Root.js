@@ -1,8 +1,6 @@
-import 'babel-polyfill';
 import React from 'react';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
-import { Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import InTheaters from '../pages/InTheaters';
 import SearchResult from '../pages/SearchResult';
@@ -14,9 +12,9 @@ import Header from '../components/Header';
 
 import '../scss/main.scss';
 
-const Root = ({ store, history }) =>
+const Root = ({ store }) => (
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <Router>
       <div>
         <Route path="/" component={Header} />
         <div className="content">
@@ -27,7 +25,8 @@ const Root = ({ store, history }) =>
         </div>
         <Route path="/" component={Footer} />
       </div>
-    </ConnectedRouter>
-  </Provider>;
+    </Router>
+  </Provider>
+);
 
 export default Root;

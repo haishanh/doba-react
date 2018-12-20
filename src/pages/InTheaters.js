@@ -20,8 +20,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class InTheaters extends Component {
+class InTheaters extends Component {
   componentDidMount() {
     this.request = this.props.fetchInTheaters();
   }
@@ -41,3 +40,8 @@ export default class InTheaters extends Component {
     );
   }
 }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(InTheaters);
