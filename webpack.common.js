@@ -52,12 +52,6 @@ const cssExtractPlugin = new MiniCssExtractPlugin({
   // chunkFilename: '[id].css'
 });
 
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const extractCssPlugin = new ExtractTextPlugin({
-//   filename: 'style.[contenthash].css',
-//   allChunks: true
-// });
-
 const LOCAL_IDENT_NAME_DEV = '[path]---[name]---[local]---[hash:base64:5]';
 const LOCAL_IDENT_NAME_PROD = '[hash:base64:10]';
 const localIdentName = isDev ? LOCAL_IDENT_NAME_DEV : LOCAL_IDENT_NAME_PROD;
