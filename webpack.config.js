@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const { devtool, rules, plugins } = require('./webpack.common');
+const TerserPlugin = require('terser-webpack-plugin');
 const isDev = process.env.NODE_ENV !== 'production';
 
 const HTMLPlugin = require('html-webpack-plugin');
@@ -80,7 +81,13 @@ module.exports = {
         }
       }
     },
-    runtimeChunk: true
+    runtimeChunk: true,
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true
+      })
+    ]
   },
   plugins
 };

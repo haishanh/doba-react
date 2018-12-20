@@ -60,22 +60,14 @@ const cssExtractPlugin = new MiniCssExtractPlugin({
 
 const LOCAL_IDENT_NAME_DEV = '[path]---[name]---[local]---[hash:base64:5]';
 const LOCAL_IDENT_NAME_PROD = '[hash:base64:10]';
-const getCssLoaderOptions = (opt = {}) => {
-  return Object.assign(
-    {
-      minimize: true,
-      localIdentName: isDev ? LOCAL_IDENT_NAME_DEV : LOCAL_IDENT_NAME_PROD
-    },
-    opt
-  );
-};
+const localIdentName = isDev ? LOCAL_IDENT_NAME_DEV : LOCAL_IDENT_NAME_PROD;
 
 const loaders = {
   style: { loader: 'style-loader' },
-  css: { loader: 'css-loader', options: getCssLoaderOptions() },
+  css: { loader: 'css-loader' },
   cssModule: {
     loader: 'css-loader',
-    options: getCssLoaderOptions({ modules: true })
+    options: { modules: true, localIdentName }
   },
   postcss: {
     loader: 'postcss-loader',
@@ -176,8 +168,6 @@ module.exports.rules = rules;
 
 // ----- plugins
 
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
 const definePlugin = new webpack.DefinePlugin({
   'process.env': {
     NODE_ENV: JSON.stringify('production')
@@ -209,21 +199,6 @@ if (isDev) {
     ...pluginsCommon,
     new webpack.HashedModuleIdsPlugin(),
     definePlugin,
-    // see https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-    new UglifyJSPlugin({
-      // enable parallelization.
-      // default number of concurrent runs: os.cpus().length - 1.
-      parallel: true,
-      // enable file caching.
-      // default path to cache directory:
-      // node_modules/.cache/uglifyjs-webpack-plugin.
-      cache: true
-      // debug
-      // uglifyOptions: {
-      //   compress: false,
-      //   mangle: false
-      // }
-    }),
     cssExtractPlugin,
     // extractCssPlugin,
     bundleAnalyzerPlugin
