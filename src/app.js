@@ -1,17 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import createHistory from 'history/createHashHistory';
 import configureStore from './store/configureStore';
 
 import Root from './components/Root';
 
-const history = createHistory();
-const store = configureStore(history);
-const props = {
-  history,
-  store
-};
+const store = configureStore();
+const props = { store };
 
 const render = (Component, props = {}) => {
   ReactDOM.render(

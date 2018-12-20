@@ -3,20 +3,17 @@ import thunkMiddleware from 'redux-thunk';
 // import { createLogger } from 'redux-logger';
 import rootReducer from '../ducks';
 import { loadState } from '../lib/storage';
-import { routerMiddleware } from 'react-router-redux';
 
 const preloadedState = loadState();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default function configureStore(history) {
+export default function configureStore() {
   const store = createStore(
     rootReducer,
     preloadedState,
     // should remove logger middleware from prod build
-    // but...I don't really care for such an app
-    composeEnhancers(
-      applyMiddleware(thunkMiddleware, routerMiddleware(history))
-    )
+    // but...I don't care :)))
+    composeEnhancers(applyMiddleware(thunkMiddleware))
   );
 
   if (module.hot) {
